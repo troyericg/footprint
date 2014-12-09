@@ -1,0 +1,48 @@
+
+.main {
+	padding: 64px 0;
+}
+
+.post-body {
+	width: 100%;
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 48px 0;
+}
+
+.body {
+	position: relative;
+	display: inline;
+	float: left;
+	width: 70%;
+}
+
+.footnotes {
+	position: relative;
+	display: block;
+	width: 100%;
+}
+.footnotes.active {	
+	display: inline;
+	float: left;
+	width: 30%;
+}
+
+.footnotes.inactive {
+	clear: both;
+	border-top: 1px solid #ccc;
+	margin-top: 24px;
+	padding-top: 48px;
+	width: 70%;
+}
+
+.footnotes li {
+	margin-bottom: 12px;
+}
+
+
+sup {
+	color: magenta;
+	font-family: sans-serif;
+	font-weight: 700;
+}
