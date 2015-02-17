@@ -39,7 +39,8 @@
 			hidden: false,
 			markers: '.body sup',
 			notes: '.footnotes ol li, .footnotes ul li',
-			container: '.footnotes'
+			container: '.footnotes',
+			threshold: 768
 		};
 
 	function Plugin(element, options){
@@ -47,7 +48,7 @@
 		this.opts = $.extend(defaults, options);
 		this._defaults = defaults;
 		this._name = pluginName;
-		// play hooky 
+ 
 		this.init();
 	};
 
@@ -112,6 +113,7 @@
 	};
 
 	Plugin.prototype.detectCollision = function(div1, div2) {
+		if (this.opts.threshold > $(window).innerWidth()) return;
 		var that = this,
 			$div1 = $(div1),
 			$div2 = $(div2),
@@ -134,16 +136,16 @@
 
 	Plugin.prototype.repositionNotes = function (flag, set) {
 		var that = this,
-			threshold = 480,
 			winWidth;
 
 		this.sels.$win.smartresize(function(){
 			winWidth = $(window).innerWidth();
-			if ( winWidth > threshold ) {
+			if ( winWidth > that.opts.threshold ) {
 				that.setNotes(that.sels.$sups, that.sels.$notes);
-			} else {
-				that.resetNotes();
-			}
+			} 
+			// else {
+			// 	that.resetNotes();
+			// }
 		});
 	};
 
@@ -175,12 +177,11 @@
 			}
 		});
 	}
-
 })(jQuery);
 
 
 // IMPLEMENTATION
-// $(".body sup").footsies({
+// $(".body sup").footprint({
 // 	notes: ".footnotes li",
 // 	container: ".footnotes"
 // });
